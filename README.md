@@ -42,18 +42,6 @@
 ![As Anomaly](plots/fig6_As__pct__anomaly.png)
 ![Cu Anomaly](plots/fig6_Cu__pct__anomaly.png)
 
-## 🛠️ نصب و استفاده
-
-### پیش‌نیازها
-- نصب بودن [Python 3.x](https://www.python.org/) در سیستم.
-
-### راه‌اندازی
-۱. مخزن (Repository) را کلون کنید یا فایل‌ها را دانلود کنید.
-۲. برای ویندوز، فایل نصب خودکار را اجرا کنید:
-   ```cmd
-   install_requirements.bat
-   ```
-   *(همچنین می‌توانید به صورت دستی از طریق `pip install -r requirements.txt` نصب کنید)*
 
 ### اجرای تحلیل
 فایل داده خود را با نام `geochemical_data.csv` در پوشه اصلی قرار دهید، سپس دستور زیر را اجرا کنید:
