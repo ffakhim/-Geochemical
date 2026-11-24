@@ -1,23 +1,78 @@
-# -Geochemical
-Phyton tool for processing mineral data and finding exploration targets
-# Mineral Data Processing & Target Identification (Python Project)
+<div dir="rtl">
 
-This project demonstrates how to use Python to make geological data analysis faster and more accurate.
+# ابزار تحلیل داده‌های ژئوشیمیایی
 
-## 📝 What does this project do?
-Instead of processing geochemical data manually (which is slow and prone to mistakes), I developed a Python method to:
-1. **Clean the data:** Automatically handle raw assay data.
-2. **Analyze:** Calculate statistics and find patterns in elements like Au, Cu, and Ag.
-3. **Detect Anomalies:** Identify potential mineral targets (anomalies) using mathematical methods.
-4. **Visualize:** Automatically create professional charts (Depth profiles, Heatmaps, etc.).
+یک ابزار حرفه‌ای مبتنی بر پایتون که برای خودکارسازی تحلیل‌های آماری و بصری داده‌های ژئوشیمیایی طراحی شده است. این پروژه داده‌های غلظت عناصر را پردازش می‌کند تا پروفیل‌های عمقی، توزیع‌های آماری، همبستگی عناصر و ناهنجاری‌های ژئوشیمیایی را استخراج کند.
 
-## 🚀 Why use this approach?
-- **Speed:** Processes large datasets in seconds.
-- **Accuracy:** Removes human error during manual calculations.
-- **Consistency:** Ensures the same high-quality results every time.
+## 🚀 ویژگی‌ها
 
-## 🛠️ Tools Used
-- **Python** (using Pandas, NumPy, Matplotlib and Reaborn)
+- **پردازش داده‌ها**: بارگذاری خودکار فایل‌های CSV و مدیریت مقادیر "کمتر از حد تشخیص" (`<LOD`) از طریق تبدیل آن‌ها به `NaN`.
+- **آمار توصیفی**: محاسبه میانگین، انحراف معیار، ضریب تغییرات (CV)، چولگی (Skewness)، کشیدگی (Kurtosis) و چارک‌ها برای عناصر کلیدی.
+- **مصورسازی‌های پیشرفته**:
+    - **پروفیل‌های عمقی (Depth Profiles)**: ردیابی تغییرات غلظت عناصر نسبت به عمق نمونه‌برداری.
+    - **هیستوگرام‌های مقیاس لگاریتمی**: نمایش توزیع فرکانسی عناصر در مقیاس log.
+    - **نقشه حرارتی همبستگی (Correlation Heatmap)**: شناسایی روابط و وابستگی‌های متقابل بین عناصر مختلف.
+    - **تحلیل رگرسیون**: انجام رگرسیون خطی بین عناصر کلیدی (مانند Cu در مقابل As) به همراه محاسبه ضریب تعیین ($R^2$).
+- **شناسایی ناهنجاری‌ها**: شناسایی ناهنجاری‌های ژئوشیمیایی با استفاده از آستانه آماری (میانگین + ۲ انحراف معیار روی داده‌های لگاریتمی).
+- **گزارش‌دهی خودکار**: تولید گزارش‌های جامع PDF شامل آمار خلاصه و تمام یافته‌های بصری.
 
-> **Note:** The data used in this project is synthetic (mock data) and created only to demonstrate the efficiency of the Python method.
+## 📊 مصورسازی‌ها
 
+در ادامه، خروجی‌های کلیدی تولید شده توسط این تحلیل آورده شده است:
+
+### ۱. پروفیل‌های عمقی
+نشان‌دهنده تغییرات غلظت عناصر در طول عمق.
+![Depth Profiles](plots/fig1_depth_profiles.png)
+
+### ۲. توزیع عناصر
+هیستوگرام‌های فرکانسی عناصر در مقیاس لگاریتمی.
+![Histograms](plots/fig2_histograms.png)
+
+### ۳. ماتریس همبستگی
+نقشه حرارتی که روابط بین عناصر مختلف را نشان می‌دهد.
+![Correlation Heatmap](plots/fig3_correlation_heatmap.png)
+
+### ۴. تحلیل رگرسیون (Cu vs As)
+رابطه خطی بین مس و آرسنیک.
+![Regression Plot](plots/fig4_Cu__pct__vs_As__pct_.png)
+
+### ۵. شناسایی ناهنجاری
+شناسایی بصری ناهنجاری‌های ژئوشیمیایی.
+![Ag Anomaly](plots/fig6_Ag__pct__anomaly.png)
+![As Anomaly](plots/fig6_As__pct__anomaly.png)
+![Cu Anomaly](plots/fig6_Cu__pct__anomaly.png)
+
+## 🛠️ نصب و استفاده
+
+### پیش‌نیازها
+- نصب بودن [Python 3.x](https://www.python.org/) در سیستم.
+
+### راه‌اندازی
+۱. مخزن (Repository) را کلون کنید یا فایل‌ها را دانلود کنید.
+۲. برای ویندوز، فایل نصب خودکار را اجرا کنید:
+   ```cmd
+   install_requirements.bat
+   ```
+   *(همچنین می‌توانید به صورت دستی از طریق `pip install -r requirements.txt` نصب کنید)*
+
+### اجرای تحلیل
+فایل داده خود را با نام `geochemical_data.csv` در پوشه اصلی قرار دهید، سپس دستور زیر را اجرا کنید:
+```bash
+python geochemical_analysis.py
+```
+
+## 🧪 تکنولوژی‌های مورد استفاده
+
+- **Python** (زبان اصلی)
+- **Pandas** (مدیریت داده‌ها)
+- **NumPy** (محاسبات عددی)
+- **Matplotlib** (رسم نمودار پایه)
+- **Seaborn** (مصورسازی آماری)
+- **SciPy** (توابع آماری پیشرفته)
+
+## 👤 نویسنده
+
+**فریبا فخیم علی اکبری**  
+*تحلیلگر داده‌های ژئوشیمیایی*
+
+</div>
